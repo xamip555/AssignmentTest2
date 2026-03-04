@@ -1,0 +1,125 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RAG App with Citations</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 900px;
+      margin: 24px auto;
+      padding: 0 16px;
+      line-height: 1.5;
+      color: #1f2937;
+    }
+
+    h1, h2 {
+      margin-bottom: 8px;
+    }
+
+    section {
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 16px;
+      background: #ffffff;
+    }
+
+    input[type="file"], input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+      box-sizing: border-box;
+    }
+
+    button {
+      cursor: pointer;
+      border: 1px solid #9ca3af;
+      background: #f9fafb;
+      padding: 6px 10px;
+      border-radius: 6px;
+    }
+
+    button:hover {
+      background: #f3f4f6;
+    }
+
+    ul {
+      padding-left: 18px;
+    }
+
+    .doc-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin: 8px 0;
+      align-items: center;
+    }
+
+    .citation-btn {
+      margin: 4px 6px 0 0;
+      font-size: 0.9rem;
+    }
+
+    .source-item {
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 10px;
+      margin-bottom: 10px;
+      background: #f9fafb;
+      scroll-margin-top: 12px;
+    }
+
+    .source-item.highlight {
+      border-color: #2563eb;
+      background: #dbeafe;
+      transition: background 0.4s ease;
+    }
+
+    .muted {
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+
+    .answer {
+      white-space: normal;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>RAG App with Citations</h1>
+
+  <section>
+    <h2>Upload Document</h2>
+    <input id="fileInput" type="file" accept=".txt,.md,.pdf">
+    <button id="uploadBtn">Upload</button>
+    <div id="uploadMessage" class="muted"></div>
+  </section>
+
+  <section>
+    <h2>Documents</h2>
+    <div id="documents"></div>
+  </section>
+
+  <section>
+    <h2>Ask a Question</h2>
+    <input id="questionInput" type="text" placeholder="Ask something from uploaded documents...">
+    <button id="askBtn">Ask</button>
+
+    <div id="answerBlock" style="display:none; margin-top: 12px;">
+      <h3>Answer</h3>
+      <div id="answerText" class="answer"></div>
+      <div id="citations"></div>
+
+      <details id="sourcesPanel" style="margin-top: 12px;">
+        <summary>Show Sources</summary>
+        <div id="sources"></div>
+      </details>
+    </div>
+  </section>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
